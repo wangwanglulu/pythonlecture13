@@ -3,622 +3,546 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lecture 13</title>
-    <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/white.css">
-    <link rel="stylesheet" href="css/theme/custom.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/white.css" id="theme">
     <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/github-gist.css">
-    <!-- Printing and PDF exports -->
-    <script>
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-    document.getElementsByTagName('head')[0].appendChild(link);
-    </script>
+    <link rel="stylesheet" href="plugin/highlight/github.css">
+    <link rel="stylesheet" href="plugin/chalkboard/style.css">
+    <link rel="stylesheet" href="plugin/customcontrols/style.css">
+    <link rel="stylesheet" href="plugin/menu/font-awesome/css/all.css">
 </head>
 
 <body>
     <div class="reveal" style="background-color: #fff;">
         <div class="slides">
             <section data-background-video="bgm.mp4" data-background-video-loop data-background-video-muted style="text-align: left;">
-                <h2 style="color: white">Python Programming</h2>
-                <h5 style="color: white">Lecture 13 Algorithm Intro</h5>
+                <h1 style="color: white">Python Programming</h1>
+                <h3 style="color: white">Lecture 13 Downloading Data</h3>
             </section>
+            
             <section>
                 <section data-background="#2980b9" style="color: white">
-                    <h2 style="color: white">13.1 Algorithm Intro</h2>
+                    <h2 style="color: white">13.1 Downloading Data (1)</h2>
                 </section>
                 <section>
-                    <div class="div-c"><img data-src="a2.jpg" style="height: 350pt"></div>
-                    <div class="div-d"><img data-src="a1.png" style="height: 350pt"></div>
-                </section>
-                <section>
-                    <ul>
-                        <li>Complexity, Big-O (Searching)</li>
-                        <li>Recursion, D&C</li>
-                        <li>Sorting Algorithms</li>
-                        <li>Greedy Algorithm</li>
-                        <li>Dynamic Programming</li>
-                        <li>Data Structures</li>
-                    </ul>
-                </section>
-                <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>Another stream of the basic knowledge about programming is <b>algorithm and data structure.</b></p>
-                        </li>
-                        <li>When two program solve the same problem but look different, is one program better than the other? (easy to read? easy to understand? execution time?)</li>
-                        <li class="fragment">
-                            <p>An algorithm is a set of instructions for accomplishing a task.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Every piece of code could be called an algorithm.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>To learn this, you only need to know some basic algebra and Discrete mathematics.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Let's start with a simple algorithm.</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <h6>Binary Search</h6>
-                    <ul>
-                        <li class="fragment">
-                            <p>Binary search is an algorithm; its input is a sorted list of elements. If an element you’re looking for is in that list, binary search returns the position where it’s located. Otherwise, binary search returns null.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Here's an example of how binary search works. I'm thinking of a number between 1 and 100.</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="0.png" style="height: 100pt"></div>
-                </section>
-                <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>You have to try to guess my number in the fewest tries possible. With every guess, I'll tell you if your guess is too low, too high, or correct.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Suppose you start guessing like this: 1, 2, 3, 4 ...</p>
-                        </li>
-                        <li class="fragment">
-                            <p>If you perform a simple search, and my number was 99, it could take you 99 guesses to get there!</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>Here's a better technique. Start with 50.</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="01.png" style="height: 200pt"></div>
-                    <div class="fragment"><img data-src="2.png" style="height: 200pt"></div>
-                </section>
-                <section>
-                    <div class="fragment"><img data-src="3.png" style="height: 200pt"></div>
-                    <div class="fragment"><img data-src="4.png" style="height: 100pt"></div>
-                    <ul>
-                        <li class="fragment">
-                            <p>In general, for any list of $n$, binary search will take $log_2n$ steps to run in the worst case, whereas simple search will take $n$ steps.
-                            </p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <ul>
-                        <li class="fragment">
-                            <p><b>Running time</b></p>
-                        </li>
-                        <li class="fragment">
-                            <p>Any time I talk about an algorithm, I'll discuss its running time. Generally you want to choose the most efficient algorithm— whether you're trying to optimize for time or space.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>For simple search, the maximum number of guesses is the same as the size of the list. This is called <b>linear time</b>.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Binary search runs in <b>logarithmic time</b>.</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <h6>Big O notation</h6>
-                    <ul>
-                        <li class="fragment">
-                            <p>Big O notation is special notation that tells you how fast an algorithm is.</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="5.png" style="height: 120pt"></div>
-                    <ul>
-                        <li class="fragment">
-                            <p>You need to know how the running time increases as the list size increases. That's where Big O notation comes in.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Big O notation tells you how fast an algorithm is. For example, suppose you have a list of size n. Simple search needs to check each element, so it will take n operations. The run time in Big O notation is $O(n)$.</p>
-                        </li>
-                        <li class="fragment">
-                            <p><b>Big O notation lets you compare the number of operations. It tells you how fast the algorithm grows. Run times grow at very different speeds.</b></p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>Binary search needs $log n$ operations to check a list of size n. It's $O(log n)$.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>Sometimes the performance of an algorithm depends on the exact values of the data rather than simply the size of the problem. For these kinds of algorithms we need to characterize their performance in terms of best case, <b>average case</b> and <b>worst-case</b> performance.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>$O(log n)$, $O(n)$, $O(n * log n)$, $O(n^2)$, $O(2^n)$, $O(n!)$</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="6.png" style="height: 300pt"></div>
-                </section>
-                <section>
-                    <h5> P, NP, NP-complete, NP-hard</h5>
-                    <div class="fragment"><img data-src="66.png" style="height: 150pt"></div>
-                    <ul>
-                        <li class="fragment">
-                            <p>P (polynomial): Problems that can be solved by polynomial time.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>NP (nondeterministic polynomial time): Decision problems for which the problem instances have proofs verifiable in polynomial time.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>NP-complete: The hardest problem in NP. Every problem can be transformed in polynomial time into it.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>NP-hard: Not NP but problems in NP can be transformed into it.</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <p class="fragment">TSP (travelling salesman problem)</p>
-                    <ul>
-                        <li class="fragment">
-                            <p>NP-hard: Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the origin city? </p>
-                        </li>
-                        <li class="fragment">
-                            <p>NP-complete: where given a length L, the task is to decide whether the graph has a tour of at most L.</p>
-                        </li>
-                    </ul>
-                </section>
-            </section>
-            <section>
-                <section data-background="#2980b9" style="color: white">
-                    <h2 style="color: white">13.2 Examples</h2>
-                </section>
-                <section>
-                    <h5>An Anagram Detection Example</h5>
-                    <ul>
-                        <li class="fragment"> A good example problem for showing algorithms with different orders of magnitude is the classic anagram detection prolem for strings.</li>
-                        <li class="fragment"> One string is an anagram of another if the second is simply a rearrangement of the first. For example, 'heart' and 'earth' are anagrams.</li>
-                    </ul>
-                </section>
-                <section>
-                    <h5>Solution 1: Checking off</h5>
-                    <ul>
-                        <li class="fragment"> Check to see that each character in the first string actually occurs in the second. </li>
-                    </ul>
+                    <p><b>.CSV</b></p>
                     <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def anagramSolution1(s1,s2):
-    alist = list(s2)
-    pos1 = 0
-    stillOK = True
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable>
+import csv
 
-    while pos1 < len(s1) and stillOK:
-        pos2 = 0
-        found = False
-        while pos2 < len(alist) and not found:
-            if s1[pos1] == alist[pos2]:
-                found = True
-            else:
-                pos2 = pos2 + 1
+filename = 'sitka_weather_07-2018_simple.csv' 
+with open(filename) as f:
+    reader = csv.reader(f) #iterator
+    header_row = next(reader)
+    print(header_row)
 
-        if found:
-            alist[pos2] = None  
-            pos1 = pos1 + 1  
-        else:
-            stillOK = False
-    return stillOK
-</code></pre>
+    for index, column_header in enumerate(header_row): #enumerate
+        print(index, column_header)
+        </code></pre>
                     </div>
-                    </ul>
-                </section>
-                <section>
-                    <h5>Solution 2: Sort and Compare</h5>
                     <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def anagramSolution2(s1,s2):
-    alist1 = list(s1)
-    alist2 = list(s2)
-
-    alist1.sort()
-    alist2.sort()
-
-    pos = 0
-    matches = True
-
-    while pos < len(s1) and matches:
-        if alist1[pos]==alist2[pos]:
-            pos = pos + 1
-        else:
-            matches = False
-    return matches
+                        <pre><code class="output" data-trim contenteditable>
+0 STATION
+1 NAME
+2 DATE
+3 PRCP
+4 TAVG
+5 TMAX
+6 TMIN
 </code></pre>
                     </div>
                 </section>
                 <section>
-                    <ul>
-                        <li class="fragment">
-                            <h5>Solution 3: Brute Force</h5>
-                        </li>
-                        <ul>
-                            <li class="fragment">
-                                <p>Generate a list of all possible strings using the characters from s1 and then see if s2 occurs. (Bad idea)</p>
-                            </li>
-                        </ul>
-                        <li class="fragment">
-                            <h5>Solution 4: Count and Compare</h5>
-                        </li>
-                        <ul>
-                            <li class="fragment">
-                                <p>Count the number of times each character occurs.</p>
-                            </li>
-                        </ul>
-                    </ul>
-                </section>
-                <section>
+                    <p>Extracting and Reading Data</p>
                     <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def anagramSolution4(s1,s2):
-    c1 = [0]*26
-    c2 = [0]*26
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable>
+import csv
 
-    for i in range(len(s1)):
-        pos = ord(s1[i])-ord('a') # ascii
-        c1[pos] = c1[pos] + 1
+filename = 'sitka_weather_07-2018_simple.csv' 
+with open(filename) as f:
+    reader = csv.reader(f)
+    header_row = next(reader)
+    print(header_row)
 
-    for i in range(len(s2)):
-        pos = ord(s2[i])-ord('a')
-        c2[pos] = c2[pos] + 1
+    for index, column_header in enumerate(header_row):
+        print(index, column_header)
 
-    j = 0
-    stillOK = True
-    while j<26 and stillOK:
-        if c1[j]==c2[j]:
-            j = j + 1
-        else:
-            stillOK = False
+    highs = []
+    for row in reader:
+        high = int(row[5])
+        highs.append(high)
 
-    return stillOK
+    print(highs)
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="output" data-trim contenteditable>
+[62, 58, 70, 70, 67, 59, 58, 62, 66, 59, 56, 63, 65, 58, 56, 59, 64, 60, 
+60, 61, 65, 65, 63, 59, 64, 65, 68, 66, 64, 67, 65]
 </code></pre>
                     </div>
                 </section>
                 <section>
-                    <h5>Performance of Python Data Structure</h5>
-                    <ul>
-                        <li class="fragment">
-                            <p>List</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="list.png" style="height: 400pt"></div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable>
+
+from matplotlib import pyplot as plt
+
+# Plot the high temperatures.
+plt.style.use('seaborn')
+fig, ax = plt.subplots()
+ax.plot(highs, c='red')
+
+# Format plot.
+ax.set_title("Daily high temperatures - 2018-7", fontsize=24)
+ax.set_xlabel('', fontsize=16)
+ax.set_ylabel("Temperature (F)", fontsize=16)
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
+# fig.savefig('simple.jpg',dpi=300)
+</code></pre>
+                    </div>
+                    <div class="fragment"><img data-src="plt11.jpg" style="height: 200pt"></div>
                 </section>
                 <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>Dictionaries</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="dict.png" style="height: 200pt"></div>
+                    <p>The datetime Module</p>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable>
+
+from datetime import datetime
+first_date = datetime.strptime('2018-7-1', '%Y-%m-%d') 
+print(type(first_date))
+print(first_date.strftime('%B %d %Y'))
+print(first_date)
+
+&lt;class 'datetime.datetime'&gt;
+July 01 2018
+2018-07-01 00:00:00
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable>
+
+%A Weekday name, such as Monday
+%B Month name, such as January
+%m Month, as a number (01 to 12)
+%d Day of the month, as a number (01 to 31) 
+%Y Four-digit year, such as 2015
+%y Two-digit year, such as 15
+%H Hour, in 24-hour format (00 to 23)
+%I Hour, in 12-hour format (01 to 12)
+%p am or pm
+%M Minutes (00 to 59) %S Seconds (00 to 61)
+</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+
+import csv
+from datetime import datetime
+from matplotlib import pyplot as plt
+
+filename = 'sitka_weather_07-2018_simple.csv'
+with open(filename) as f:
+    reader = csv.reader(f)
+    header_row = next(reader) 
+    dates, highs= [], [] 
+    for row in reader:
+        current_date = datetime.strptime(row[2], "%Y-%m-%d")
+        dates.append(current_date)
+        high = int(row[5])
+        highs.append(high)
+plt.style.use('seaborn')
+fig, ax = plt.subplots()
+ax.plot(dates, highs, c='red')
+</code></pre>
+                        <div class="fragment">
+                            <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+# Format plot.
+ax.set_title("Daily high temperatures - 2018-7", fontsize=24)
+ax.set_xlabel('', fontsize=16)
+<mark>fig.autofmt_xdate()</mark>
+ax.set_ylabel("Temperature (F)", fontsize=16)
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
+</code></pre>
+                        </div>
+                </section>
+                <section>
+                    <div class="fragment"><img data-src="plt9.jpg
+                        " style="height: 400pt"></div>
+                </section>
+                <section>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+
+import csv
+from datetime import datetime
+from matplotlib import pyplot as plt
+
+<mark>filename = 'sitka_weather_2018_simple.csv'</mark>
+with open(filename) as f:
+    reader = csv.reader(f)
+    header_row = next(reader)
+    
+    <mark>dates, highs, lows= [], [], []</mark> 
+    for row in reader:
+        current_date = datetime.strptime(row[2], "%Y-%m-%d")
+        dates.append(current_date)
+        high = int(row[5])
+        highs.append(high)
+        <mark>low = int(row[6])</mark>
+        <mark>lows.append(low)</mark>
+        </code></pre>
+                </section>
+                <section>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+# Plot data.
+plt.style.use('seaborn')
+fig, ax = plt.subplots()
+ax.plot(dates, highs, c='red', alpha=0.5)
+ax.plot(dates, lows, c='blue', alpha=0.5)
+ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
+
+# Format plot.
+ax.set_title("Daily high temperatures - 2018", fontsize=24)
+ax.set_xlabel('', fontsize=16)
+fig.autofmt_xdate()
+ax.set_ylabel("Temperature (F)", fontsize=16)
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+plt.show()
+</code></pre>
+                    </div>
+                    <div class="fragment"><img data-src="plt12.jpg" style="height: 200pt"></div>
+                </section>
+                <section>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+
+import csv
+from datetime import datetime
+from matplotlib import pyplot as plt
+
+filename = 'data/death_valley_2018_simple.csv'
+with open(filename) as f:
+    reader = csv.reader(f)
+    header_row = next(reader)
+    dates, highs, lows = [], [], []
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+
+# continue   
+    for row in reader:
+        try:
+            current_date = datetime.strptime(row[2], "%Y-%m-%d")
+            high = int(row[4])
+            low = int(row[5])
+        except ValueError:
+            print(current_date, 'missing data')
+        else:
+            dates.append(current_date)
+            highs.append(high)
+            lows.append(low)
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>  
+# Plot data.
+#--snip--
+</code></pre>
+                    </div>
+                </section>
+                <section>
+                    <div class="fragment"><img data-src="plt10.jpg" style="height: 400pt"></div>
                 </section>
             </section>
             <section>
                 <section data-background="#2980b9" style="color: white">
-                    <h2 style="color: white">13.3 Recursion</h2>
+                    <h2 style="color: white">12.3 Downloading Data (2)</h2>
                 </section>
                 <section>
-                    <h5>Recursion</h5>
-                    <ul>
-                        <li class="fragment">
-                            <p>Recursion is a method of solving problems that involves breaking a problem down into smaller and smaller subproblems until you get to a small enough problem that it can be solved trivially. </p>
-                        </li>
-                        <li class="fragment">
-                            <p>Recursion allows us to write elegant solutions to problems that may otherwise be very difficult to program.</p>
-                        </li>
-                    </ul>
-                                        <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def listsum(numList):
-    theSum = 0
-    for i in numList:
-        theSum = theSum + i
-    return theSum
-</code></pre>
-                    </div>
-                                                            <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def listsum(numList):
-   if len(numList) == 1:
-        return numList[0]
-   else:
-        return numList[0] + listsum(numList[1:])
-</code></pre>
-                    </div>
-                </section>
-                <section>
-                    <h6>Base case and recursive case</h6>
+                    <p><b>.JSON</b></p>
                     <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def fact(n):
-    if n==1:
-        return 1 #Base case
-    else:
-        return n * fact(n - 1) #recursive case
-</code></pre>
-                    </div>
-                    <ul>
-                        <li class="fragment">
-                            <p>The recursive case is when the function calls itself. The base case is when the function does not call itself again... so it doesn't go into an infinite loop.</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <h6>The stack</h6>
-                    <div class="fragment">
-                        <pre><code class="line-numbers" data-trim contenteditable>
-def greet(name):
-    print('hello '+ name + '!')
-    greet2(name)
-    print('getting ready to say bye...')
-    bye()
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
 
-def greet2(name):
-    print('how are you, ' + name + '?')
-def bye():
-    print('Ok, bye!')
+import json
+
+filename = 'btc_close_2017.json'
+with open(filename) as f:
+    btc_data = json.load(f)  
+
+for btc_dict in btc_data:
+    date = btc_dict['date']
+    month = int(btc_dict['month'])
+    week = int(btc_dict['week'])
+    weekday = btc_dict['weekday']
+    close = int(float(btc_dict['close']))  
+    print("{} is month {} week {}, {}, the close price is {} RMB".format(
+        date, month, week, weekday, close))
 </code></pre>
                     </div>
-                    <div class="fragment"><img data-src="s1.png" style="height: 150pt"></div>
+                    <div class="fragment">
+                        <pre><code class="output language-Python" data-line-numbers data-trim contenteditable data-noescape>
+2017-01-01 is month 1 week 52, Sunday, the close price is 6928 RMB
+2017-01-02 is month 1 week 1, Monday, the close price is 7070 RMB
+2017-01-03 is month 1 week 1, Tuesday, the close price is 7175 RMB
+2017-01-04 is month 1 week 1, Wednesday, the close price is 7835 RMB
+2017-01-05 is month 1 week 1, Thursday, the close price is 6928 RMB
+...
+</code></pre>
+                    </div>
                 </section>
                 <section>
-                    <div class="fragment"><img data-src="s2.png" style="height: 150pt"></div>
-                    <div class="fragment"><img data-src="s3.png" style="height: 150pt"></div>
-                    <div class="fragment"><img data-src="s4.png" style="height: 130pt"></div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+import json
+
+filename = 'btc_close_2017.json'
+with open(filename) as f:
+    btc_data = json.load(f)  
+
+date=[]; close=[]; months=[]
+
+for btc_dict in btc_data:
+    date.append(btc_dict['date'])
+    months.append(int(btc_dict['month']))
+    close.append(int(float(btc_dict['close'])))
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+import matplotlib.pyplot as plt
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.style.use('ggplot')
+plt.plot(close, linewidth=0.5)
+plt.scatter(date,close, s=5)
+plt.xticks(date[::20],rotation=45,fontsize=6)
+plt.title('收盘价',fontsize=10)
+plt.tight_layout()
+plt.savefig('收盘价折线图.jpg',dpi=300)
+</code></pre>
+                    </div>
                 </section>
                 <section>
-                    <h6>The call stack with recursion</h6>
-                    <div class="fragment"><img data-src="s5.png" style="height: 400pt"></div>
+                    <div class="fragment"><img data-src="收盘价折线图.jpg" style="height: 350pt"></div>
                 </section>
                 <section>
-                    <div class="fragment"><img data-src="s6.png" style="height: 400pt"></div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+import matplotlib.pyplot as plt
+import math
+
+plt.rcParams['font.sans-serif'] = ['SimHei']
+plt.style.use('ggplot')
+close_log = [math.log10(xx) for xx in close]
+plt.plot(close_log, linewidth=0.5)
+plt.scatter(date,close_log, s=5)
+plt.xticks(date[::20],rotation=45,fontsize=6)
+plt.title('收盘价',fontsize=10)
+plt.tight_layout()
+plt.savefig('收盘价对数变换折线图.jpg',dpi=300)
+</code></pre>
+                    </div>
                 </section>
                 <section>
-                    <div class="fragment"><img data-src="s7.png" style="height: 300pt"></div>
+                    <div class="fragment"><img data-src="收盘价对数变换折线图.jpg" style="height: 350pt"></div>
                 </section>
                 <section>
-                    <div class="fragment"><img data-src="s8.png" style="height: 300pt"></div>
+                    <p class="fragment"><b>groupby()</b></p>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+from itertools import groupby
+
+for key, value_iter in groupby('aaabbbaaccd'):
+    print(key, ':', list(value_iter))
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="output language-Python" data-trim contenteditable data-noescape>
+a : ['a', 'a', 'a']
+b : ['b', 'b', 'b']
+a : ['a', 'a']
+c : ['c', 'c']
+d : ['d']
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+from itertools import groupby
+
+data = ['a', 'bb', 'ccc', 'dd', 'eee', 'f']
+for key, value_iter in groupby(data, len):  
+    print(key, ':', list(value_iter))
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="output language-Python" data-trim contenteditable data-noescape>
+1 : ['a']
+2 : ['bb']
+3 : ['ccc']
+2 : ['dd']
+3 : ['eee']
+1 : ['f']
+</code></pre>
+                    </div>
                 </section>
                 <section>
-                    <h6>Divide and Conquer (D&C, 分而治之)</h6>
-                    <ul>
-                        <li class="fragment">
-                            <p>D&C gives you a new way to think about solving problems. When you get a new problem, you don't have to be stumped. Instead, you can ask, "Can I solve this if I use divide and conquer?"</p>
-                        </li>
-                        <li class="fragment">
-                            <p>You want to divide this farm evenly into square plots. You want the plots to be as big as possible.</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="7.png" style="height: 120pt"></div>
-                    <div class="fragment"><img data-src="8.png" style="height: 150pt"></div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+from itertools import groupby
+data = ['a', 'bb', 'cc', 'ddd', 'eee', 'f']
+for key, value_iter in groupby(data, len):  
+    print(key, ':', list(value_iter))
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="output language-Python" data-trim contenteditable data-noescape>
+1 : ['a']
+2 : ['bb', 'cc']
+3 : ['ddd', 'eee']
+1 : ['f']
+</code></pre>
+                    </div>
+                    <p class="fragment"><b>zip()</b></p>
+                    <div class="div-c">
+                        <div class="fragment">
+                            <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+>>> a = [1,2,3]
+>>> b = [4,5,6]
+>>> c = [4,5,6,7,8]
+>>> zipped = zip(a,b)
+>>> zipped
+<zip object at 0x02B01B48> #iterator
+>>> list(zipped)
+[(1, 4), (2, 5), (3, 6)] 
+>>> list(zip(a,c))
+[(1, 4), (2, 5), (3, 6)]</code></pre>
+                        </div>
+                    </div>
+                    <div class="div-d">
+                        <div class="fragment">
+                            <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+>>> a = [1,2,3]
+>>> b = [4,5,6]
+>>> c = [4,5,6,7,8]
+>>> zipped = zip(a,b)
+>>> list(zip(*zipped)) 
+[(1, 2, 3), (4, 5, 6)]
+>>> zipped = zip(a,b)
+>>> x,y = zip(*zipped)
+>>> print(x)
+(1,2,3)
+</code></pre>
+                        </div>
+                    </div>
                 </section>
                 <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>To solve a problem using D&C, there are two steps:</p>
-                        </li>
-                        <li class="fragment">
-                            <p>1. Figure out the base case. This should be the simplest possible case.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>2. Divide or decrease your problem until it becomes the base case.</p>
-                        </li>
-                        <li class="fragment">
-                            <p>What is the largest square size you can use? You have to reduce your problem. Let’s start by marking out the biggest boxes you can use.</p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="9.png" style="height: 200pt"></div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+from itertools import groupby
+import matplotlib.pyplot as plt
+
+def draw_line(x_data, y_data, title):
+    xy_map = []
+    y_list = []
+    <mark>for x, y in groupby(sorted(zip(x_data, y_data)), lambda w: w[0]):</mark>  
+        for first, second in y:
+            y_list.append(second)
+        xy_map.append([x, sum(y_list) / len(y_list)])  
+    x_unique, y_mean = zip(*xy_map) 
+
+    plt.rcParams['font.sans-serif'] = ['SimHei']
+    plt.style.use('ggplot')
+    plt.plot(x_unique, y_mean, linewidth=0.5)
+    plt.scatter(x_unique, y_mean, s=5)
+    plt.title(title,fontsize=10)
+    plt.tight_layout()
+    plt.savefig(title+'.jpg',dpi=300)
+</code></pre>
+                    </div>
+                    <div class="fragment">
+                        <pre><code class="language-Python" data-line-numbers data-trim contenteditable data-noescape>
+idx_month = date.index('2017-12-01') 
+line_chart_month = draw_line(months[:idx_month], close[:idx_month], '收盘价月日均值')
+</code></pre>
+                    </div>
                 </section>
                 <section>
-                    <ul>
-                        <li class="fragment">
-                            <p>There's a farm segment left to divide. <b>Why don't you apply the same algorithm to this segment?</b></p>
-                        </li>
-                    </ul>
-                    <div class="fragment"><img data-src="10.png" style="height: 200pt"></div>
-                    <ul>
-                        <li class="fragment">
-                            <p>If you find the biggest box that will work for this size, that will be the biggest box that will work for the entire farm. You just reduced the problem from a 1680 × 640 farm to a 640 × 400 farm!</p>
-                        </li>
-                    </ul>
-                </section>
-                <section>
-                    <div class="fragment"><img data-src="11.png" style="height: 150pt"></div>
-                    <div class="fragment"><img data-src="12.png" style="height: 150pt"></div>
-                    <div class="fragment"><img data-src="13.png" style="height: 150pt"></div>
-                </section>
-                <section>
-                    <div class="fragment"><img data-src="14.png" style="height: 150pt"></div>
-                    <ul>
-                        <li class="fragment">
-                            <p>To recap, here's how D&C works: </p>
-                        </li>
-                        <li class="fragment">
-                            <p>1. Figure out a simple case as the base case. </p>
-                        </li>
-                        <li class="fragment">
-                            <p>2. Figure out how to reduce your problem and get to the base case. </p>
-                        </li>
-                        <li class="fragment">
-                            <p><b>D&C isn't a simple algorithm that you can apply to a problem. Instead, it's a way to think about a problem.</b></p>
-                        </li>
-                    </ul>
+                    <div class="fragment"><img data-src="收盘价月日均值.jpg" style="height: 400pt"></div>
                 </section>
             </section>
             <section>
                 <section data-background="#2c3e50" style="color: white; text-align: left;">
                     <h2 style="color: white">Summary</h2>
                     <ul>
-                        <li>Algorithm Intro</li>
+                        <li>Downloading Data</li>
+                        <ul>
+                            <li>Reading: Python Crash Course, Chapter 16</li>
+                        </ul>
                     </ul>
                 </section>
             </section>
         </div>
     </div>
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.js"></script>
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/math/math.js"></script>
+    <script src="plugin/zoom_old/zoom_old.js"></script>
+    <script src="plugin/chalkboard/plugin.js"></script>
+    <script src="plugin/customcontrols/plugin.js"></script>
     <script>
-    // More info about config & dependencies:
-    // - https://github.com/hakimel/reveal.js#configuration
-    // - https://github.com/hakimel/reveal.js#dependencies
+    // Also available as an ES module, see:
+    // https://revealjs.com/initialization/
     Reveal.initialize({
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 960,
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        // Bounds for smallest/largest possible scale to apply to content
-        minScale: 0.2,
-        maxScale: 1.5,
-
-        // Display controls in the bottom right corner
         controls: true,
-
-        // Display a presentation progress bar
         progress: true,
-
-        // Set default timing of 2 minutes per slide
-        defaultTiming: 120,
-
-        // Display the page number of the current slide
-        slideNumber: true,
-
-        // Push each slide change to the browser history
-        history: false,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Vertical centering of slides
         center: true,
+        hash: true,
+        customcontrols: {
+            controls: [{
+                    id: 'toggle-overview',
+                    title: 'Toggle overview (O)',
+                    icon: '<i class="fa fa-th"></i>',
+                    action: 'Reveal.toggleOverview();'
+                },
+                {
+                    icon: '<i class="fa fa-pen-square"></i>',
+                    title: 'Toggle chalkboard (B)',
+                    action: 'RevealChalkboard.toggleChalkboard();'
+                },
+                {
+                    icon: '<i class="fa fa-pen"></i>',
+                    title: 'Toggle notes canvas (C)',
+                    action: 'RevealChalkboard.toggleNotesCanvas();'
+                }
+            ]
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealChalkboard, RevealCustomControls, RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight, RevealMath.KaTeX],
 
-        // Enables touch navigation on devices with touch input
-        touch: true,
 
-        // Loop the presentation
-        loop: false,
 
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autolaying embedded media (video/audio/iframe)
-        // - null: Media will only autoplay if data-autoplay is present
-        // - true: All media will autoplay, regardless of individual setting
-        // - false: No media will autoplay, regardless of individual setting
-        autoPlayMedia: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: Reveal.navigateNext,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // Hides the address bar on mobile devices
-        hideAddressBar: true,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style
-        transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-        // Transition speed
-        transitionSpeed: 'default', // default/fast/slow
-
-        // Transition style for full page slide backgrounds
-        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Parallax background image
-        parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
-
-        // Parallax background size
-        parallaxBackgroundSize: '', // CSS syntax, e.g. "2100px 900px"
-
-        // Number of pixels to move the parallax background per slide
-        // - Calculated automatically unless specified
-        // - Set to 0 to disable movement along an axis
-        parallaxBackgroundHorizontal: null,
-        parallaxBackgroundVertical: null,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        dependencies: [
-            { src: 'plugin/markdown/marked.js' },
-            { src: 'plugin/markdown/markdown.js' },
-            { src: 'plugin/notes/notes.js', async: true },
-            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            // Zoom in and out with Alt+click
-            { src: 'plugin/zoom-js/zoom.js', async: true },
-
-            // Speaker notes
-            { src: 'plugin/notes/notes.js', async: true },
-
-            // MathJax
-            { src: 'plugin/math/math.js', async: true },
-            { src: 'plugin/line-numbers/line-numbers.js' }
-        ]
+    });
+    Reveal.configure({
+        pdfSeparateFragments: false
     });
     </script>
 </body>
