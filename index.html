@@ -460,8 +460,8 @@ import matplotlib.pyplot as plt
 
 def draw_line(x_data, y_data, title):
     xy_map = []
-    y_list = []
     <mark>for x, y in groupby(sorted(zip(x_data, y_data)), lambda w: w[0]):</mark>  
+        y_list = []
         for first, second in y:
             y_list.append(second)
         xy_map.append([x, sum(y_list) / len(y_list)])  
